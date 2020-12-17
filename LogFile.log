@@ -1,0 +1,150 @@
+2020-06-12 15:16:55,187 - DEBUG - Starting new HTTPS connection (1): api.parsable.net:443
+2020-06-12 15:16:56,928 - DEBUG - https://api.parsable.net:443 "POST /api/job_templates HTTP/1.1" 200 None
+2020-06-12 15:16:59,003 - ERROR - Exception occurred
+Traceback (most recent call last):
+  File "Parsable_API_Calls.py", line 363, in <module>
+    parsable.template_metadata_to_excel(templates)
+  File "Parsable_API_Calls.py", line 337, in template_metadata_to_excel
+    sheet.cell(row = i+2, column = j+1, value = region_string)
+NameError: name 'region_string' is not defined
+2020-06-12 15:19:04,321 - DEBUG - Starting new HTTPS connection (1): api.parsable.net:443
+2020-06-12 15:19:06,037 - DEBUG - https://api.parsable.net:443 "POST /api/job_templates HTTP/1.1" 200 None
+2020-06-12 15:19:07,619 - ERROR - Exception occurred
+Traceback (most recent call last):
+  File "Parsable_API_Calls.py", line 363, in <module>
+    parsable.template_metadata_to_excel(templates)
+  File "Parsable_API_Calls.py", line 337, in template_metadata_to_excel
+    sheet.cell(row = i+2, column = j+1, value = region_string)
+NameError: name 'region_string' is not defined
+2020-06-12 15:20:35,333 - DEBUG - Starting new HTTPS connection (1): api.parsable.net:443
+2020-06-12 15:20:37,194 - DEBUG - https://api.parsable.net:443 "POST /api/job_templates HTTP/1.1" 200 None
+2020-06-12 15:20:38,085 - INFO - Execution Finished: 2.9182679653167725 seconds
+2020-06-12 15:21:07,261 - DEBUG - Starting new HTTPS connection (1): api.parsable.net:443
+2020-06-12 15:21:09,040 - DEBUG - https://api.parsable.net:443 "POST /api/job_templates HTTP/1.1" 200 None
+2020-06-12 15:21:09,955 - ERROR - Exception occurred
+Traceback (most recent call last):
+  File "Parsable_API_Calls.py", line 358, in <module>
+    parsable.template_metadata_to_excel(templates)
+  File "Parsable_API_Calls.py", line 336, in template_metadata_to_excel
+    for location in template["metadataById"]["02bf6962-5658-442d-b5bf-51b48f5e7062"]["value"]["selectedListValues"]["values"]:
+KeyError: '02bf6962-5658-442d-b5bf-51b48f5e7062'
+2020-06-12 15:21:43,728 - DEBUG - Starting new HTTPS connection (1): api.parsable.net:443
+2020-06-12 15:21:45,657 - DEBUG - https://api.parsable.net:443 "POST /api/job_templates HTTP/1.1" 200 None
+2020-06-12 15:21:46,531 - ERROR - Exception occurred
+Traceback (most recent call last):
+  File "Parsable_API_Calls.py", line 358, in <module>
+    parsable.template_metadata_to_excel(templates)
+  File "Parsable_API_Calls.py", line 336, in template_metadata_to_excel
+    for location in template["metadataById"]["02bf6962-5658-442d-b5bf-51b48f5e7062"]["value"]["selectedListValues"]["values"]:
+KeyError: '02bf6962-5658-442d-b5bf-51b48f5e7062'
+2020-06-12 15:24:20,535 - DEBUG - Starting new HTTPS connection (1): api.parsable.net:443
+2020-06-12 15:24:22,375 - DEBUG - https://api.parsable.net:443 "POST /api/job_templates HTTP/1.1" 200 None
+2020-06-12 15:24:23,247 - ERROR - Exception occurred
+Traceback (most recent call last):
+  File "Parsable_API_Calls.py", line 358, in <module>
+    parsable.template_metadata_to_excel(templates)
+  File "Parsable_API_Calls.py", line 345, in template_metadata_to_excel
+    sheet.cell(row = i+2, column = j+1, value = template["metadataById"]["80ac5e3a-3ba2-41f2-8714-2e7e53d2fd12"]["value"]["listValue"])
+KeyError: '80ac5e3a-3ba2-41f2-8714-2e7e53d2fd12'
+2020-06-12 15:26:46,881 - DEBUG - Starting new HTTPS connection (1): api.parsable.net:443
+2020-06-12 15:26:49,013 - DEBUG - https://api.parsable.net:443 "POST /api/job_templates HTTP/1.1" 200 None
+2020-06-12 15:26:50,073 - ERROR - Exception occurred
+Traceback (most recent call last):
+  File "Parsable_API_Calls.py", line 362, in <module>
+    parsable.template_metadata_to_excel(templates)
+  File "Parsable_API_Calls.py", line 344, in template_metadata_to_excel
+    department = template["metadataById"]["80ac5e3a-3ba2-41f2-8714-2e7e53d2fd12"]["value"]["listValue"]
+KeyError: '80ac5e3a-3ba2-41f2-8714-2e7e53d2fd12'
+2020-06-12 15:29:15,271 - DEBUG - Starting new HTTPS connection (1): api.parsable.net:443
+2020-06-12 15:29:16,983 - DEBUG - https://api.parsable.net:443 "POST /api/job_templates HTTP/1.1" 200 None
+2020-06-12 15:29:18,463 - ERROR - Exception occurred
+Traceback (most recent call last):
+  File "Parsable_API_Calls.py", line 359, in <module>
+    parsable.template_metadata_to_excel(templates)
+  File "Parsable_API_Calls.py", line 337, in template_metadata_to_excel
+    for location in template["metadataById"]["02bf6962-5658-442d-b5bf-51b48f5e7062"]["value"]["selectedListValues"]["values"]:
+KeyError: '02bf6962-5658-442d-b5bf-51b48f5e7062'
+2020-06-12 15:40:27,834 - DEBUG - Starting new HTTPS connection (1): api.parsable.net:443
+2020-06-12 15:40:29,755 - DEBUG - https://api.parsable.net:443 "POST /api/job_templates HTTP/1.1" 200 None
+2020-06-12 15:40:30,739 - INFO - Execution Finished: 3.0779483318328857 seconds
+2020-06-12 15:49:06,565 - DEBUG - Starting new HTTPS connection (1): api.parsable.net:443
+2020-06-12 15:49:08,719 - DEBUG - https://api.parsable.net:443 "POST /api/job_templates HTTP/1.1" 200 None
+2020-06-12 15:49:09,782 - INFO - Execution Finished: 3.3812358379364014 seconds
+2020-09-16 13:59:20,383 - DEBUG - Starting new HTTPS connection (1): api.parsable.net:443
+2020-09-16 13:59:23,427 - DEBUG - https://api.parsable.net:443 "POST /api/job_templates HTTP/1.1" 200 None
+2020-09-16 13:59:24,130 - INFO - Execution Finished: 3.752578020095825 seconds
+2020-09-25 13:34:41,884 - DEBUG - Starting new HTTPS connection (1): api.parsable.net:443
+2020-09-25 13:34:45,611 - DEBUG - https://api.parsable.net:443 "POST /api/job_templates HTTP/1.1" 200 None
+2020-09-25 13:34:46,364 - INFO - Execution Finished: 4.629455327987671 seconds
+2020-10-30 14:07:57,654 - DEBUG - Starting new HTTPS connection (1): api.parsable.net:443
+2020-10-30 14:07:58,921 - DEBUG - https://api.parsable.net:443 "POST /api/job_templates HTTP/1.1" 200 None
+2020-10-30 14:08:02,164 - INFO - Execution Finished: 4.658804893493652 seconds
+2020-10-30 14:24:59,247 - DEBUG - Starting new HTTPS connection (1): api.parsable.net:443
+2020-10-30 14:24:59,471 - DEBUG - https://api.parsable.net:443 "POST /api/jobs HTTP/1.1" 200 119
+2020-10-30 14:24:59,473 - ERROR - Exception occurred
+Traceback (most recent call last):
+  File "Parsable_API_Calls.py", line 438, in <module>
+    json.dump(parsable.query_jobs_before_date(1593583200), json_file)
+  File "Parsable_API_Calls.py", line 218, in query_jobs_before_date
+    if not ("err" in jsonRespose['result']) and not ("exception" in jsonRespose):
+KeyError: 'result'
+2020-10-30 14:30:33,856 - DEBUG - Starting new HTTPS connection (1): api.parsable.net:443
+2020-10-30 14:31:38,080 - DEBUG - https://api.parsable.net:443 "POST /api/jobs HTTP/1.1" 200 None
+2020-10-30 14:31:57,733 - INFO - Execution Finished: 83.88243985176086 seconds
+2020-10-30 15:48:45,950 - DEBUG - Starting new HTTPS connection (1): api.parsable.net:443
+2020-10-30 15:48:49,760 - DEBUG - https://api.parsable.net:443 "POST /api/jobs HTTP/1.1" 200 None
+2020-10-30 15:48:50,424 - INFO - Execution Finished: 4.614725112915039 seconds
+2020-11-19 14:20:23,146 - DEBUG - Starting new HTTPS connection (1): api.parsable.net:443
+2020-11-19 14:20:24,548 - DEBUG - https://api.parsable.net:443 "POST /api/job_templates HTTP/1.1" 200 None
+2020-11-19 14:20:25,298 - INFO - Execution Finished: 2.2921130657196045 seconds
+2020-11-19 14:24:04,448 - DEBUG - Starting new HTTPS connection (1): api.parsable.net:443
+2020-11-19 14:24:04,686 - DEBUG - https://api.parsable.net:443 "POST /api/job_templates HTTP/1.1" 200 254
+2020-11-19 14:24:04,690 - ERROR - Exception occurred
+Traceback (most recent call last):
+  File "Parsable_API_Calls.py", line 470, in <module>
+    parsable.template_metadata_to_excel(templates)
+  File "Parsable_API_Calls.py", line 379, in template_metadata_to_excel
+    for i in range(0, len(template_list)):
+TypeError: object of type 'NoneType' has no len()
+2020-11-19 14:25:54,811 - DEBUG - Starting new HTTPS connection (1): api.parsable.net:443
+2020-11-19 14:25:55,267 - DEBUG - https://api.parsable.net:443 "POST /api/job_templates HTTP/1.1" 200 254
+2020-11-19 14:25:55,270 - INFO - Execution Finished: 0.7228631973266602 seconds
+2020-11-19 14:33:36,940 - DEBUG - Starting new HTTPS connection (1): api.parsable.net:443
+2020-11-19 14:33:38,458 - DEBUG - https://api.parsable.net:443 "POST /api/job_templates HTTP/1.1" 200 None
+2020-11-19 14:33:39,786 - INFO - Execution Finished: 2.853581190109253 seconds
+2020-11-19 14:35:22,484 - DEBUG - Starting new HTTPS connection (1): api.parsable.net:443
+2020-11-19 14:35:23,905 - DEBUG - https://api.parsable.net:443 "POST /api/job_templates HTTP/1.1" 200 None
+2020-11-19 14:35:26,347 - INFO - Execution Finished: 4.006137847900391 seconds
+2020-11-19 14:38:27,604 - DEBUG - Starting new HTTPS connection (1): api.parsable.net:443
+2020-11-19 14:38:28,871 - DEBUG - https://api.parsable.net:443 "POST /api/job_templates HTTP/1.1" 200 None
+2020-11-19 14:38:29,637 - INFO - Execution Finished: 2.2108139991760254 seconds
+2020-12-11 14:50:18,115 - DEBUG - Starting new HTTPS connection (1): api.parsable.net:443
+2020-12-11 14:50:19,720 - DEBUG - https://api.parsable.net:443 "POST /api/job_templates HTTP/1.1" 200 None
+2020-12-11 14:50:22,972 - INFO - Execution Finished: 5.036265850067139 seconds
+2020-12-11 14:54:31,004 - DEBUG - Starting new HTTPS connection (1): api.parsable.net:443
+2020-12-11 14:54:31,234 - DEBUG - https://api.parsable.net:443 "POST /api/job_templates HTTP/1.1" 200 254
+2020-12-11 14:54:31,239 - ERROR - Exception occurred
+Traceback (most recent call last):
+  File "Parsable_API_Calls.py", line 471, in <module>
+    parsable.template_metadata_to_excel(templates)
+  File "Parsable_API_Calls.py", line 380, in template_metadata_to_excel
+    for i in range(0, len(template_list)):
+TypeError: object of type 'NoneType' has no len()
+2020-12-11 14:54:55,919 - DEBUG - Starting new HTTPS connection (1): api.parsable.net:443
+2020-12-11 14:54:57,746 - DEBUG - https://api.parsable.net:443 "POST /api/job_templates HTTP/1.1" 200 None
+2020-12-11 14:55:00,764 - INFO - Execution Finished: 4.8505589962005615 seconds
+2020-12-17 12:22:30,815 - DEBUG - Starting new HTTPS connection (1): api.parsable.net:443
+2020-12-17 12:22:32,536 - DEBUG - https://api.parsable.net:443 "POST /api/job_templates HTTP/1.1" 200 None
+2020-12-17 12:22:33,525 - INFO - Execution Finished: 2.8495450019836426 seconds
+2020-12-17 12:24:22,732 - DEBUG - Starting new HTTPS connection (1): api.parsable.net:443
+2020-12-17 12:24:22,968 - DEBUG - https://api.parsable.net:443 "POST /api/job_templates HTTP/1.1" 200 254
+2020-12-17 12:24:22,972 - ERROR - Exception occurred
+Traceback (most recent call last):
+  File "Parsable_API_Calls.py", line 472, in <module>
+    parsable.template_metadata_to_excel(templates)
+  File "Parsable_API_Calls.py", line 381, in template_metadata_to_excel
+    for i in range(0, len(template_list)):
+TypeError: object of type 'NoneType' has no len()
+2020-12-17 12:24:45,637 - DEBUG - Starting new HTTPS connection (1): api.parsable.net:443
+2020-12-17 12:24:47,504 - DEBUG - https://api.parsable.net:443 "POST /api/job_templates HTTP/1.1" 200 None
+2020-12-17 12:24:48,590 - INFO - Execution Finished: 2.959131956100464 seconds
