@@ -148,3 +148,9 @@ TypeError: object of type 'NoneType' has no len()
 2020-12-17 12:24:45,637 - DEBUG - Starting new HTTPS connection (1): api.parsable.net:443
 2020-12-17 12:24:47,504 - DEBUG - https://api.parsable.net:443 "POST /api/job_templates HTTP/1.1" 200 None
 2020-12-17 12:24:48,590 - INFO - Execution Finished: 2.959131956100464 seconds
+2021-01-07 09:21:52,605 - DEBUG - Starting new HTTPS connection (1): api.parsable.net:443
+2021-01-07 09:21:53,936 - DEBUG - https://api.parsable.net:443 "POST /api/job_templates HTTP/1.1" 200 None
+2021-01-07 09:21:54,472 - INFO - Execution Finished: 1.8756589889526367 seconds
+2021-04-05 14:36:42,679 - DEBUG - Starting new HTTPS connection (1): api.parsable.net:443
+2021-04-05 14:36:44,247 - DEBUG - https://api.parsable.net:443 "POST /api/job_templates HTTP/1.1" 200 None
+2021-04-05 14:36:45,698 - INFO - Execution Finished: 3.0782370567321777 seconds
