@@ -24,7 +24,7 @@ class Parsable():
 
 		#TODO: MUST ADD TOKEN
 		self.authToken = 
-
+		
 		# API base URL
 		self.baseURL = "https://api.parsable.net/api/"
 		##baseURL = "http://localhost:8080/api/"
@@ -80,7 +80,7 @@ class Parsable():
 		            "teamId": self.production_team_id,
 		            "isComplete": True,
                     # Epoch Time: Current Time - 24 hour
-                    "completedSinceTime": (int(time.mktime(time.localtime())) - 86400)
+                    "completedSinceTime": (int(time.mktime(time.localtime())) - 86400),
 		        }
 		    }
 		}
@@ -93,9 +93,77 @@ class Parsable():
 			jsonRespose = job_list_response.json()
  			# Make sure JSON object is good
 			if not ("err" in jsonRespose['result']) and not ("exception" in jsonRespose):
-				for job in jsonRespose['result']['success']["jobs"]:
-					print(job['lookupId'])
+				# Return a job list from json response
+				return jsonRespose['result']['success']["jobs"]
+				
+			# TODO: Fix to match if statement			
+			# else:
+			# 	logging.error(str(jsonRespose["result"]["err"]["errorCode"]) + " - JSON Object Error!")
+		else:
+			logging.error(str(job_list_response.status_code) + " - GetData POST Request Unsuccessful!")
 
+	def query_jobs_timeframe(self, days_left):
+		"""
+		Querys a list of all job objects that contain a jobs metadata.
+
+		Parameters:
+			days_left (int): Integer of the amount of days before today.
+
+		Returns:
+			Job Object List: A list of job objects that contain a jobs metadata.
+		"""
+
+		# Determine day time frame in the past
+		full_day_sec = 86400
+		since_past_time = (days_left * full_day_sec) if days_left > 0 else 0
+		before_past_time = ((days_left - 1) * full_day_sec) if days_left > 0 else 0
+
+		# Build an API call which querys a all jobs.
+		url = self.baseURL + "jobs#query"
+		payload = {
+			"method": "query",
+			"arguments": {
+				"selectOpts": {
+					"includeTeam": False,
+					"includeTemplate": False,
+					"includeRootHeaders": False,
+					"includeSteps": False,
+					"includeDocuments": False,
+					"includeUsers": False,
+					"includeStats": False,
+					"includeActivity": False,
+					"includeTemplates": False,
+					"includeCreator": False,
+					"includeRoles": False,
+					"includePermissions": False,
+					"includeExecSnippets": False,
+					"includeMessages": False,
+					"includeIssues": False,
+					"includeDeviationCounts": False,
+					"includeDeviations": False,
+					"includeRefMap": False,
+					"includePlannedDataSheetIds": False,
+					"includeSnapshottedDataSheetValues": False,
+					"includeAttributes": False
+				},
+				"whereOpts": {
+					"teamId": self.production_team_id,
+					"isComplete": True,
+					# Epoch Time
+					"completedSinceTime": (int(time.mktime(time.localtime())) - since_past_time),
+					"completedBeforeTime": (int(time.mktime(time.localtime())) - before_past_time)
+				}
+			}
+		}
+
+		# Get job data Request
+		job_list_response = requests.request('POST', url=url, data=None, json=payload, headers=self.headers)
+		# Make sure request was successful
+		if job_list_response.status_code == 200:
+			# Get JSON response object
+			jsonRespose = job_list_response.json()
+			# Make sure JSON object is good
+			if not ("err" in jsonRespose['result']) and not ("exception" in jsonRespose):
 				# Return a job list from json response
 				return jsonRespose['result']['success']["jobs"]
 				
@@ -225,8 +293,26 @@ class Parsable():
 if __name__ == "__main__":
 	try:
 		parsable = Parsable()
-		# Query a list of jobs
-		jobs_list = parsable.query_jobs()
+		# Days since August 1, 2018
+		# TODO: MUST UDPATE DAILY
+		days_since = 1070
+
+		for i in range(days_since, 0, -1):
+			# Query a list of jobs
+			jobs_list = parsable.query_jobs_timeframe(i)
+			print(i)
+			# Make sure jobs_list is not NoneType (Empty)
+			if jobs_list:
+				# Go through job list job by job to get job data
+				for job in jobs_list:
+					# Get job data call
+					job_data = parsable.get_job_data(job)
+					# Make sure job_data is not NoneType (Empty) (Job not already downloaded) 
+					if job_data:
+						# Get all document IDs in job
+						parsable.get_all_document_ids(job_data, job["lookupId"])
+			else:
+				logging.info("Empty Job List")
 
 	except Exception as e:
 		logging.exception("Exception occurred")
