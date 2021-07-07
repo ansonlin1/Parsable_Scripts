@@ -1,0 +1,15 @@
+2021-07-07 14:36:52,525 - ERROR - Exception occurred
+Traceback (most recent call last):
+  File "Image_Grab_All_Jobs.py", line 21, in <module>
+    jobs_list = parsable.query_jobs_timeframe(i)
+AttributeError: 'Parsable' object has no attribute 'query_jobs_timeframe'
+2021-07-07 14:38:01,297 - DEBUG - Starting new HTTPS connection (1): api.parsable.net:443
+2021-07-07 14:38:03,176 - DEBUG - https://api.parsable.net:443 "POST /api/jobs HTTP/1.1" 200 51
+2021-07-07 14:38:03,178 - INFO - Empty Job List
+2021-07-07 14:38:03,179 - DEBUG - Starting new HTTPS connection (1): api.parsable.net:443
+2021-07-07 14:38:04,354 - DEBUG - https://api.parsable.net:443 "POST /api/jobs HTTP/1.1" 200 51
+2021-07-07 14:38:04,356 - INFO - Empty Job List
+2021-07-07 14:38:04,358 - DEBUG - Starting new HTTPS connection (1): api.parsable.net:443
+2021-07-07 14:38:04,692 - DEBUG - https://api.parsable.net:443 "POST /api/jobs HTTP/1.1" 200 51
+2021-07-07 14:38:04,695 - INFO - Empty Job List
+2021-07-07 14:38:04,697 - DEBUG - Starting new HTTPS connection (1): api.parsable.net:443
