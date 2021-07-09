@@ -32,8 +32,8 @@ if __name__ == "__main__":
                     if job_data:
                         # Get all document IDs in job
                         parsable.get_all_document_ids(job_data, job["lookupId"])
-        else:
-            logging.info("Empty Job List")
+            else:
+                logging.info("Empty Job List")
 
     except Exception as e:
         logging.exception("Exception occurred")

@@ -161,21 +161,17 @@ class Parsable():
 		else:
 			logging.error(str(job_list_response.status_code) + " - GetData POST Request Unsuccessful!")
 
-	def query_jobs_within_timeframe(self, days_before_today):
+	def query_jobs_within_timeframe(self, since_day, before_day):
 		"""
 		Querys a list of all job within a specific timeframe.
 
 		Parameters:
-			days_before_today (int): Integer of the amount of days before today.
+			since_day (int): Start Date
+			before_day (int): End Date
 
 		Returns:
 			Job Object List: A list of job objects that contain a jobs metadata.
 		"""
-
-		# Determine day time frame in the past
-		full_day_sec = 86400
-		since_past_time = (days_before_today * full_day_sec) if days_before_today > 0 else 0
-		before_past_time = ((days_before_today - 1) * full_day_sec) if days_before_today > 0 else 0
 
 		# Build an API call which querys a list of all job within a specific timeframe.
 		url = self.baseURL + "jobs#query"
@@ -209,8 +205,8 @@ class Parsable():
 					"teamId": self.production_team_id,
 					"isComplete": True,
 					# Epoch Time
-					"completedSinceTime": (int(time.mktime(time.localtime())) - since_past_time),
-					"completedBeforeTime": (int(time.mktime(time.localtime())) - before_past_time)
+					"completedSinceTime": since_day,
+					"completedBeforeTime": before_day
 				}
 			}
 		}
