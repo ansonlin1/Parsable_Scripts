@@ -1,11 +1,11 @@
 from Parsable_API import *
 
 # If Python Images Folder doesn't exist create it
-if not os.path.isdir(os.path.join(expanduser("~"), "Downloads", "Near_Miss_Photos")):
-	os.mkdir(os.path.join(expanduser("~"), "Downloads", "Near_Miss_Photos"))
+if not os.path.isdir(os.path.join(expanduser("~"), "Downloads", "All_Past_Day_Job_Photos")):
+	os.mkdir(os.path.join(expanduser("~"), "Downloads", "All_Past_Day_Job_Photos"))
 
 # Create Log File
-logFile = os.path.join(expanduser("~"), "Downloads", "Near_Miss_Log_File.log")
+logFile = os.path.join(expanduser("~"), "Downloads", "All_Past_Day_Job_Log_File.log")
 logging.basicConfig(level = logging.DEBUG, filename = logFile, format='%(asctime)s - %(levelname)s - %(message)s')
 
 
@@ -14,10 +14,10 @@ if __name__ == "__main__":
         before_download = time.time()
 
         parsable = Parsable()
-        parsable.photo_dest = os.path.join(expanduser("~"), "Downloads", "Near_Miss_Photos")
+        parsable.photo_dest = os.path.join(expanduser("~"), "Downloads", "All_Past_Day_Job_Photos")
 
         # Query a list of jobs
-        jobs_list = parsable.query_jobs_by_template(parsable.template_id_list)
+        jobs_list = parsable.query_jobs_last_day()
         # Make sure jobs_list is not NoneType (Empty)
         if jobs_list:
             # Go through job list job by job to get job data

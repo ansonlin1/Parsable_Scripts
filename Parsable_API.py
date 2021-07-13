@@ -33,7 +33,7 @@ class Parsable():
 
 		self.photo_dest = ""
 
-	def query_jobs(self, templateIds):
+	def query_jobs_by_template(self, templateIds):
 		"""
 		Querys a list of job objects within the last 24 hours that contain a specific list of templates.
 
