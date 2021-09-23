@@ -11,11 +11,11 @@ class Parsable():
 		"""Initialize all useful information"""
 
 		self.production_team_id = "f0b1ad0a-e589-413e-bf9d-3fdaf7590df8"
-		# self.sandbox_team_id = "7bd5118a-9e55-44e7-992d-ba30854e31ef" 
+		self.sandbox_team_id = "7bd5118a-9e55-44e7-992d-ba30854e31ef" 
 
 		#TODO: MUST ADD TOKEN
 		self.authToken = 
-		
+
 		# List of templates. ["NA SAF Near Miss"]
 		self.template_id_list = ["731a87e6-9b87-48d2-bde3-11fbb5e0595c"]
 
@@ -32,6 +32,63 @@ class Parsable():
 		}
 
 		self.photo_dest = ""
+
+	def query_templates(self, environment_id):
+		"""
+		Querys a list of template objects that contain a template's metadata.
+
+		Parameters:
+			environment_id (String): ID of the environment 
+
+		Returns:
+			Template Object List: A list of template objects that contain a template's metadata.
+		"""
+
+		# Build an API call which querys a list of all templates.
+		url = self.baseURL + "job_templates#query"
+		payload = {
+		    "method": "query",
+    		"arguments": {
+	        	"selectOpts": {
+		            "includeTeam": True,
+		            "includeRootHeaders": False,
+		            "includeSteps": False,
+		            "includeDocuments": False,
+		            "includeLastPublished": False,
+		            "includeLastAuthor": False,
+		            "includeStats": False,
+		            "includeTags": False,
+		            "includeDrafts": False,
+		            "includeLastModified": False,
+		            "includeAttributes": False,
+		            "includeRefMap": False,
+		            "includeOriginalAuthor": False
+		        },
+	        	"whereOpts": {
+	            	"teamId": environment_id,
+	            	"isArchived": False
+	        	}
+    		}
+		}
+
+		# Get template data Request
+		template_list_response = requests.request('POST', url=url, data=None, json=payload, headers=self.headers)
+
+		# Make sure request was successful
+		if template_list_response.status_code == 200:
+			# Get JSON response object
+			jsonRespose = template_list_response.json()
+
+			# Make sure JSON object is good
+			if not ("err" in jsonRespose['result']) and not ("exception" in jsonRespose):
+				# Return a template list from json response
+				return jsonRespose['result']['success']["templates"]
+
+			# TODO: Fix to match if statement			
+			# else:
+			# 	logging.error(str(jsonRespose["result"]["err"]["errorCode"]) + " - JSON Object Error!")
+		else:
+			logging.error(str(template_list_response.status_code) + " - GetData POST Request Unsuccessful!")
 
 	def query_jobs_by_template(self, templateIds):
 		"""
@@ -301,7 +358,7 @@ class Parsable():
 					if "documents" in job_input:
 						for job_image in job_input["documents"]:
 							# Grab the image ID in the image list
-							imageId = job_image["id"]
+							imageId = str(job_image["id"])
 							# Tuple that contains (jobLookupId, documentId)
 							documentTuple = (jobLookupId, imageId)
 							# Download Image
@@ -450,3 +507,123 @@ class Parsable():
 			return str(job_completion_response.status_code)
 		else:
 			logging.error(str(job_completion_response.status_code) + " - GetData POST Request Unsuccessful!")
+	
+	def acquire_lock(self, template_id):
+		"""
+		Acquire lock to start editing a template
+
+		Parameters:
+			template_id (String): Template ID to to acquire lock from.
+
+		Returns:
+			Statuc Code (String): JSON response status code
+		"""
+
+		# Build an API call which acquires the lock of a template.
+		url = self.baseURL + "job_templates#acquireLock"
+		payload = {
+		    "method": "acquireLock",
+    		"arguments": {
+	        	"jobTemplateId": template_id
+    		}
+		}
+
+		# POST Acquire Lock Request
+		acquire_lock_response = requests.request('POST', url=url, data=None, json=payload, headers=self.headers)
+
+		# Make sure request was successful
+		if acquire_lock_response.status_code == 200:
+			return acquire_lock_response.status_code
+		else:
+			logging.error(str(acquire_lock_response.status_code) + " - acquireLock POST Request Unsuccessful!")
+	
+	def release_lock(self, template_id):
+		"""
+		Release lock to end editing a template
+
+		Parameters:
+			template_id (String): Template ID to to release lock from.
+
+		Returns:
+			Statuc Code (String): JSON response status code
+		"""
+
+		# Build an API call which releases the lock of a template.
+		url = self.baseURL + "job_templates#releaseLock"
+		payload = {
+		    "method": "releaseLock",
+    		"arguments": {
+	        	"jobTemplateId": template_id
+    		}
+		}
+
+		# POST Release Lock Request
+		release_lock_response = requests.request('POST', url=url, data=None, json=payload, headers=self.headers)
+
+		# Make sure request was successful
+		if release_lock_response.status_code == 200:
+			return release_lock_response.status_code
+		else:
+			logging.error(str(release_lock_response.status_code) + " - releaseLock POST Request Unsuccessful!")
+	
+	def update_template_title(self, template_id):
+		"""
+		Update a template's title.
+
+		Parameters:
+			template_id (String): Template ID to update title from.
+
+		Returns:
+			Statuc Code (String): JSON response status code
+		"""
+
+		# Build an API call which updates the title of a template.
+		url = self.baseURL + "job_templates#update"
+		payload = {
+		    "method": "update",
+    		"arguments": {
+	        	"jobTemplateId": template_id,
+				"params": {
+					"title": ""
+				}
+    		}
+		}
+
+		# POST Update Title Request
+		update_title_response = requests.request('POST', url=url, data=None, json=payload, headers=self.headers)
+
+		# Make sure request was successful
+		if update_title_response.status_code == 200:
+			return update_title_response.status_code
+		else:
+			logging.error(str(update_title_response.status_code) + " - update POST Request Unsuccessful!")
+	
+	def publish_template(self, template_id):
+		"""
+		Publish Template
+
+		Parameters:
+			template_id (String): Template ID to publish.
+
+		Returns:
+			Statuc Code (String): JSON response status code
+		"""
+
+		# Build an API call which publishes a template.
+		url = self.baseURL + "job_templates#publish"
+		payload = {
+		    "method": "publish",
+    		"arguments": {
+	        	"jobTemplateId": template_id
+    		}
+		}
+
+		# POST Publish Template Request
+		publish_template_response = requests.request('POST', url=url, data=None, json=payload, headers=self.headers)
+
+		# Make sure request was successful
+		if publish_template_response.status_code == 200:
+			return publish_template_response.status_code
+		else:
+			logging.error(str(publish_template_response.status_code) + " - publish POST Request Unsuccessful!")
+	

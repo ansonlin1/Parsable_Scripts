@@ -1,8 +1,11 @@
 from Parsable_API import *
 
+# Base Directory
+base_path = os.path.join(expanduser("~"), "Downloads")
+
 # Create Log File
-logFile = os.path.join(expanduser("~"), "Documents", "Python_Projects_GIT", "Parsable_Scripts", "Template_To_Excel_Log_File.log")
-logging.basicConfig(level = logging.DEBUG, filename = logFile, format='%(asctime)s - %(levelname)s - %(message)s')
+log_file_path = os.path.join(base_path, "Template_To_Excel_Log_File.log")
+logging.basicConfig(level = logging.DEBUG, filename = log_file_path, format='%(asctime)s - %(levelname)s - %(message)s')
 
 if __name__ == "__main__":
     try:
@@ -10,11 +13,8 @@ if __name__ == "__main__":
 
         parsable = Parsable()
         
-        templates = parsable.query_templates()
+        templates = parsable.query_templates(parsable.sandbox_team_id)
         parsable.template_metadata_to_excel(templates)
-
-        # with open('parsable_jobs.json', 'w') as json_file:
-        # 	json.dump(parsable.query_jobs_before_date(1593583200), json_file)
 
         """
         Template Version -> ["publicVersion"]

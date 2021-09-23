@@ -1,12 +1,24 @@
 from Parsable_API import *
 
+# Base Directory
+base_path = os.path.join(expanduser("~"), "Downloads")
+
 # If Python Images Folder doesn't exist create it
-if not os.path.isdir(os.path.join(expanduser("~"), "Downloads", "Near_Miss_Photos")):
-	os.mkdir(os.path.join(expanduser("~"), "Downloads", "Near_Miss_Photos"))
+if not os.path.isdir(os.path.join(base_path, "Near_Miss_Photos")):
+    # Create Folder to hold all images
+    os.mkdir(os.path.join(base_path, "Near_Miss_Photos"))
+
+# If Log Folder doesn't exist create it
+if not os.path.isdir(os.path.join(base_path, "Near_Miss_Photos", "Near_Miss_Job_Logs")):
+    # Create folder to hold all log files
+    os.mkdir(os.path.join(base_path, "Near_Miss_Photos", "Near_Miss_Job_Logs"))
 
 # Create Log File
-logFile = os.path.join(expanduser("~"), "Downloads", "Near_Miss_Log_File.log")
-logging.basicConfig(level = logging.DEBUG, filename = logFile, format='%(asctime)s - %(levelname)s - %(message)s')
+local_time = time.localtime()
+local_time_tuple = (str(local_time.tm_mon), str(local_time.tm_mday), str(local_time.tm_year), "Log.log")
+log_file_name = "_".join(local_time_tuple)
+log_file_path = os.path.join(base_path, "Near_Miss_Photos", "Near_Miss_Job_Logs", log_file_name)
+logging.basicConfig(level = logging.DEBUG, filename = log_file_path, format='%(asctime)s - %(levelname)s - %(message)s')
 
 
 if __name__ == "__main__":
@@ -14,7 +26,7 @@ if __name__ == "__main__":
         before_download = time.time()
 
         parsable = Parsable()
-        parsable.photo_dest = os.path.join(expanduser("~"), "Downloads", "Near_Miss_Photos")
+        parsable.photo_dest = os.path.join(base_path, "Near_Miss_Photos")
 
         # Query a list of jobs
         jobs_list = parsable.query_jobs_by_template(parsable.template_id_list)
